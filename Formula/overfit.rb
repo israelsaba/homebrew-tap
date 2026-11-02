@@ -20,7 +20,10 @@ class Overfit < Formula
     end
 
     on_linux do
-      "Run 'overfit setup' to choose an AI provider and model. The API key is stored in ~/.config/overfit/config (mode 0600)."
+      <<~EOS
+        Run 'overfit setup' to choose an AI provider and model.
+        The API key is stored in ~/.config/overfit/config (mode 0600).
+      EOS
     end
   end
 
