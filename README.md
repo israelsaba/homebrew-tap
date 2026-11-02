@@ -1,88 +1,52 @@
-# israelsaba/homebrew-tap
+# Homebrew Agentic: Homebrew tap for AI and agentic developer tools
 
-Homebrew tap for **overfit** – a UNIX-philosophy CLI tool for multi-turn conversations with AI providers.
+`israelsaba/agentic` is a Homebrew tap for small command-line tools built for AI-assisted and agent-driven software work. Each formula builds from a tagged release of its source repository.
 
-## Installation
+## Formulae
 
-### Via the tap (current)
+| Formula | What it does | Source |
+| --- | --- | --- |
+| `overfit` | AI commit message and GitHub pull request generator. Writes Conventional Commits and PR titles and bodies with OpenAI, Gemini, xAI, Anthropic, or a custom OpenAI-compatible model, then commits, pushes, and runs `gh pr create`. | [israelsaba/overfit](https://github.com/israelsaba/overfit) |
 
-```bash
-brew tap israelsaba/homebrew-tap
-brew install overfit
+## Install
+
+```sh
+brew install israelsaba/agentic/overfit
+overfit setup
 ```
 
-Or in one command:
-
-```bash
-brew install israelsaba/homebrew-tap/overfit
-```
-
-Or in a `Brewfile`:
+That command taps this repository and trusts only the `overfit` formula. In a `Brewfile`:
 
 ```ruby
-tap "israelsaba/homebrew-tap"
-brew "overfit"
+tap "israelsaba/agentic"
+brew "israelsaba/agentic/overfit"
 ```
 
-### From core (coming soon)
+The repository was previously named `homebrew-tap`. GitHub redirects the old URL, but switch existing installs to the new name:
 
-Once overfit reaches 30+ GitHub stars and meets Homebrew's inclusion criteria, it will be available as:
-
-```bash
-brew install overfit
+```sh
+brew untap israelsaba/tap
+brew install israelsaba/agentic/overfit
 ```
 
-## About overfit
+## Trust
 
-**overfit** is a lightweight CLI tool for having multi-turn conversations with AI providers, following UNIX philosophy: compose well with pipes, shell redirects, and standard streams.
+Formulae in a third-party tap run Ruby with your user's privileges during installation. Read [`Formula/overfit.rb`](Formula/overfit.rb) and the source it builds before installing. Each formula pins a release tarball by SHA-256.
 
-### Supported Providers
-- OpenAI
-- xAI
-- Google AI
-- Anthropic
+## Updates
 
-### Cross-platform Credential Management
-- **macOS**: Credentials stored securely in Keychain
-- **Linux**: Credentials stored in `~/.config/overfit/config` (mode 0600)
+New release tags in a source repository are picked up by the scheduled `brew bump` workflow, which opens a pull request here. `brew test-bot` runs on macOS and Linux for every pull request.
 
-## Quick Start
+## Issues
 
-```bash
-# Initial setup (interactive configuration)
-overfit setup
+Report formula or installation problems in this repository. Report bugs in a tool itself in its source repository. Include `brew config`, the formula version, and the full command output, and never post API keys.
 
-# Have a conversation
-overfit main
+## Sources
 
-# Help
-overfit --help
-```
-
-## Tap Structure
-
-- `Formula/overfit.rb` – Production formula for overfit CLI
-- `.github/workflows/tests.yml` – Automated tests on macOS and Linux
-- `.github/workflows/publish.yml` – Bottle building and publishing
-- `.github/workflows/autobump.yml` – Dependency updates
-
-## Trust Model
-
-This is a personal Homebrew tap. Homebrew treats formulae from this tap as trusted after you explicitly add it. To verify the formula's integrity, review the source at https://github.com/israelsaba/overfit.
-
-## Testing
-
-Tests run automatically on each commit:
-
-```bash
-# Manual test
-brew test israelsaba/tap/overfit
-```
-
-## Contributing
-
-Issues, PRs, and suggestions welcome at https://github.com/israelsaba/overfit.
+- [Homebrew taps](https://docs.brew.sh/Taps), accessed 2026-11-02.
+- [Homebrew tap trust](https://docs.brew.sh/Tap-Trust), accessed 2026-11-02.
+- [Formula Cookbook](https://docs.brew.sh/Formula-Cookbook), accessed 2026-11-02.
 
 ## License
 
-overfit is licensed under the MIT License. See LICENSE in the main repository.
+Each tool keeps the license of its source repository. `overfit` is MIT licensed.
